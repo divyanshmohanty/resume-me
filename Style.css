@@ -1,0 +1,221 @@
+/* Colours, fonts and the one spacing scale (8, 24, 40, 64) */
+:root {
+  --bg: #FAF8F4;
+  --surface: #FFFFFF;
+  --text: #2B2B2B;
+  --text-soft: #5A5A55;
+  --line: #DDD8CF;
+  --accent: #3F5E3A;
+  --s1: 8px;
+  --s2: 24px;
+  --s3: 40px;
+  --s4: 64px;
+  --edge: 24px;
+  --font-head: "Lora", Georgia, serif;
+  --font-body: "Inter", Arial, sans-serif;
+}
+
+/* Base element styles: page, text, headings, links, lists */
+* { box-sizing: border-box; }
+html { scroll-padding-top: 80px; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+h1, h2, h3, h4 {
+  font-family: var(--font-head);
+  font-weight: 600;
+  line-height: 1.25;
+  margin: var(--s2) 0 var(--s1);
+}
+h1 { font-size: 2.75rem; margin-top: 0; }
+h2 { font-size: 1.75rem; margin-top: 0; }
+h3 { font-size: 1.2rem; }
+h4 { font-size: 1rem; }
+p { margin: 0 0 var(--s1); max-width: 68ch; }
+a { color: var(--accent); text-underline-offset: 3px; transition: color 0.2s; }
+a:hover { color: var(--text); }
+a:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+ul { margin: 0; padding-left: 1.2rem; }
+li { margin-bottom: var(--s1); max-width: 68ch; }
+
+/* Every page section: centred column with edge spacing */
+section {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: var(--s3) var(--edge);
+}
+
+/* Navigation bar: flexbox, stays at the top while scrolling */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+}
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s2);
+  max-width: 960px;
+  margin: 0 auto;
+  padding: var(--s1) var(--edge);
+}
+.nav-name {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-family: var(--font-head);
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: none;
+}
+.nav-links {
+  display: flex;
+  gap: var(--s2);
+  list-style: none;
+  margin: 0 0 0 auto;
+  padding: 0;
+}
+.nav-links li { margin: 0; }
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--text);
+  text-decoration: none;
+}
+.nav-link:hover { color: var(--accent); }
+
+/* Buttons: filled for the main action, outlined for the second */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 var(--s2);
+  background: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 6px;
+  color: var(--surface);
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+}
+.button:hover {
+  background: var(--text);
+  border-color: var(--text);
+  color: var(--surface);
+}
+.button-outline { background: transparent; color: var(--accent); }
+.button-outline:hover { background: var(--text); color: var(--surface); }
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s1);
+  margin-top: var(--s2);
+}
+
+/* Hero: name, one sentence and the main call to action */
+#hero { padding-top: var(--s4); }
+.lead { font-size: 1.25rem; margin-top: var(--s1); }
+.wanted { color: var(--text-soft); }
+
+/* Work: flat cards in a grid, thin outline, no shadow */
+#work h2 { margin-bottom: var(--s2); }
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--s2);
+}
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: var(--s2);
+}
+.card h3 { margin-top: 0; }
+.meta { color: var(--text-soft); font-size: 0.9rem; }
+
+/* Resume link above the paper resume */
+#resume-intro { padding-bottom: 0; }
+.download {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-weight: 600;
+}
+
+/* Paper resume: a white one-page sheet */
+#resume {
+  width: calc(100% - 2 * var(--edge));
+  max-width: 794px;
+  margin: var(--s2) auto var(--s3);
+  padding: var(--s3);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  font-size: 0.95rem;
+}
+.resume-name {
+  font-size: 1.75rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.resume-contact { color: var(--text-soft); }
+#resume h3 {
+  padding-bottom: var(--s1);
+  border-bottom: 1px solid var(--line);
+  font-size: 1.05rem;
+}
+.job-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--s1);
+}
+.job-date { color: var(--text-soft); }
+
+/* Contact: closing call to action */
+#contact { padding-bottom: var(--s4); }
+
+/* Screens narrower than 700px: one column, simple stacked nav */
+@media (max-width: 699px) {
+  html { scroll-padding-top: 0; }
+  header { position: static; }
+  nav { flex-wrap: wrap; gap: var(--s1); }
+  .nav-links { order: 3; width: 100%; margin: 0; justify-content: space-between; }
+  h1 { font-size: 2.1rem; }
+  .cards { grid-template-columns: 1fr; }
+  .actions .button { flex: 1 1 100%; }
+  #resume { padding: var(--s2); }
+}
+
+/* Print: only the resume, on one A4 page, black text on white */
+@media print {
+  @page { size: A4; margin: 14mm; }
+  header, #hero, #work, #resume-intro, #contact { display: none; }
+  body { background: #fff; font-size: 10pt; line-height: 1.4; }
+  #resume {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 10pt;
+  }
+  #resume, #resume * { color: #000; text-decoration: none; }
+  #resume h3 { margin-top: 12pt; border-bottom-color: #000; }
+  #resume li { margin-bottom: 2pt; }
+}
+
+/* Reduced motion: turn off the colour transitions */
+@media (prefers-reduced-motion: reduce) {
+  a, .button { transition: none; }
+}
